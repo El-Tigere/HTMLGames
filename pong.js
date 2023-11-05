@@ -1,12 +1,12 @@
 const MSPF = 20;
 
+/** @type {DOMRect} */
+var canvas;
+
+/** @type {CanvasRenderingContext2D} */
+var ctx;
+
 function frame() {
-    /** @type {DOMRect} */
-    let canvas = document.getElementById('pongCanvas');
-    
-    /** @type {CanvasRenderingContext2D} */
-    let ctx = document.getElementById('pongCanvas').getContext('2d');
-    
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
@@ -19,5 +19,7 @@ function frame() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    canvas = document.getElementById('pongCanvas');
+    ctx = canvas.getContext('2d');
     setInterval(frame, MSPF);
 });

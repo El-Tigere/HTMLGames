@@ -1,5 +1,27 @@
 const MSPF = 20;
 
+var game = {
+    ball: {
+        speed: 1,
+        x: 0,
+        y: 0,
+        dx: 1,
+        dy: 1
+    },
+    p1: {
+        height: 0,
+        speed: 1,
+        y: 0,
+        input: 0
+    },
+    p2: {
+        height: 0,
+        speed: 1,
+        y: 0,
+        input: 0
+    }
+}
+
 /** @type {DOMRect} */
 var canvas;
 

@@ -32,6 +32,18 @@ var canvas;
 var ctx;
 
 function frame() {
+    // ball movement
+    game.ball.x += game.ball.dx * game.ball.speed;
+    game.ball.y += game.ball.dy * game.ball.speed;
+    if(game.ball.y < HSIZE) {
+        game.ball.y = HSIZE;
+        game.ball.dy *= -1;
+    }
+    if(game.ball.y > canvas.height - HSIZE) {
+        game.ball.y = canvas.height - HSIZE;
+        game.ball.dy *= -1;
+    }
+    
     // clear background
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);

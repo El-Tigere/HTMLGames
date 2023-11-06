@@ -32,15 +32,13 @@ var canvas;
 var ctx;
 
 function frame() {
+    // clear background
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    ctx.strokeStyle = '#FFFFFF';
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(canvas.width, canvas.height);
-    ctx.closePath();
-    ctx.stroke();
+    // draw ball
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(game.ball.x - HSIZE, game.ball.y - HSIZE, SIZE, SIZE);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

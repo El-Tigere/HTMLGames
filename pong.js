@@ -1,5 +1,8 @@
 const MSPF = 20;
 
+const SIZE = 10;
+const HSIZE = SIZE / 2;
+
 var game = {
     ball: {
         speed: 1,

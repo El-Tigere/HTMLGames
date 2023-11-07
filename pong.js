@@ -3,6 +3,8 @@ const MSPF = 20;
 const SIZE = 10;
 const HSIZE = SIZE / 2;
 
+const RELATIVE_PLAYER_HEIGHT = 1 / 8; // default player height in relation to canvas height
+
 var game = {
     ball: {
         speed: 5,
@@ -58,5 +60,8 @@ function frame() {
 document.addEventListener('DOMContentLoaded', () => {
     canvas = document.getElementById('pongCanvas');
     ctx = canvas.getContext('2d');
+    
+    game.p1.height = game.p2.height = canvas.height * RELATIVE_PLAYER_HEIGHT;
+    
     setInterval(frame, MSPF);
 });

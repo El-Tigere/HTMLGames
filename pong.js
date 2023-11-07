@@ -5,7 +5,7 @@ const HSIZE = SIZE / 2;
 
 var game = {
     ball: {
-        speed: 1,
+        speed: 5,
         x: 0,
         y: 0,
         dx: 1,
@@ -32,16 +32,18 @@ var canvas;
 var ctx;
 
 function frame() {
+    let ball = game.ball, p1 = game.p1, p2 = game.p2;
+    
     // ball movement
-    game.ball.x += game.ball.dx * game.ball.speed;
-    game.ball.y += game.ball.dy * game.ball.speed;
-    if(game.ball.y < HSIZE) {
-        game.ball.y = HSIZE;
-        game.ball.dy *= -1;
+    ball.x += ball.dx * ball.speed;
+    ball.y += ball.dy * ball.speed;
+    if(ball.y < HSIZE) {
+        ball.y = HSIZE;
+        ball.dy *= -1;
     }
-    if(game.ball.y > canvas.height - HSIZE) {
-        game.ball.y = canvas.height - HSIZE;
-        game.ball.dy *= -1;
+    if(ball.y > canvas.height - HSIZE) {
+        ball.y = canvas.height - HSIZE;
+        ball.dy *= -1;
     }
     
     // clear background
@@ -50,7 +52,7 @@ function frame() {
     
     // draw ball
     ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(game.ball.x - HSIZE, game.ball.y - HSIZE, SIZE, SIZE);
+    ctx.fillRect(ball.x - HSIZE, ball.y - HSIZE, SIZE, SIZE);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

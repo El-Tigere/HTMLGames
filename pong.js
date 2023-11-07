@@ -48,6 +48,12 @@ function frame() {
         ball.dy *= -1;
     }
     
+    // player movement
+    [p1, p2].forEach((player) => {
+        player.y += player.input * player.speed;
+        player.y = Math.min(Math.max(player.y, 0), canvas.height - player.height);
+    });
+    
     // clear background
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);

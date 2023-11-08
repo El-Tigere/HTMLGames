@@ -15,16 +15,23 @@ var game = {
     },
     p1: {
         height: 0,
-        speed: 1,
+        speed: 10,
         y: 0,
         input: 0
     },
     p2: {
         height: 0,
-        speed: 1,
+        speed: 10,
         y: 0,
         input: 0
     }
+}
+
+var input = {
+    'KeyW': 0,
+    'KeyS': 0,
+    'ArrowUp': 0,
+    'ArrowDown': 0,
 }
 
 /** @type {DOMRect} */

@@ -58,9 +58,14 @@ function frame() {
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // draw ball
     ctx.fillStyle = '#FFFFFF';
+    
+    // draw ball
     ctx.fillRect(ball.x - HSIZE, ball.y - HSIZE, SIZE, SIZE);
+    
+    // draw players
+    ctx.fillRect(0, p1.y, SIZE, p1.height);
+    ctx.fillRect(canvas.width - SIZE, p2.y, SIZE, p2.height);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

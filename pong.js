@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas = document.getElementById('pongCanvas');
     ctx = canvas.getContext('2d');
     
+    // set player height
     game.p1.height = game.p2.height = canvas.height * RELATIVE_PLAYER_HEIGHT;
     
+    // start game loop
     setInterval(frame, MSPF);
 });

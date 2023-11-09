@@ -50,12 +50,12 @@ function frame() {
     // ball movement
     ball.x += ball.dx * ball.speed;
     ball.y += ball.dy * ball.speed;
-    if(ball.y < HSIZE) {
-        ball.y = HSIZE;
+    if(ball.y < 0) {
+        ball.y = 0;
         ball.dy *= -1;
     }
-    if(ball.y > canvas.height - HSIZE) {
-        ball.y = canvas.height - HSIZE;
+    if(ball.y > canvas.height - SIZE) {
+        ball.y = canvas.height - SIZE;
         ball.dy *= -1;
     }
     
@@ -72,7 +72,7 @@ function frame() {
     ctx.fillStyle = '#FFFFFF';
     
     // draw ball
-    ctx.fillRect(ball.x - HSIZE, ball.y - HSIZE, SIZE, SIZE);
+    ctx.fillRect(ball.x, ball.y, SIZE, SIZE);
     
     // draw players
     ctx.fillRect(0, p1.y, SIZE, p1.height);

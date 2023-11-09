@@ -43,6 +43,10 @@ var ctx;
 function frame() {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
     
+    // input
+    p1.input = input['KeyS'] - input['KeyW'];
+    p2.input = input['ArrowDown'] - input['ArrowUp'];
+    
     // ball movement
     ball.x += ball.dx * ball.speed;
     ball.y += ball.dy * ball.speed;

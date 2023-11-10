@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // set player height
     game.p1.height = game.p2.height = canvas.height * RELATIVE_PLAYER_HEIGHT;
     
+    // set initial player position
+    game.p1.y = game.p2.y = ((canvas.height - game.p1.height) / 2) >> 0;
+    
     // input events
     document.addEventListener('keydown', (keyEvent) => input[keyEvent.code] = 1);
     document.addEventListener('keyup', (keyEvent) => input[keyEvent.code] = 0);

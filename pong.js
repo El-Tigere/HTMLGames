@@ -50,19 +50,19 @@ function frame() {
     // ball movement
     ball.x += ball.dx * ball.speed;
     ball.y += ball.dy * ball.speed;
-    if(ball.y < 0) {
-        ball.y = 0;
-        ball.dy *= -1;
-    }
-    if(ball.y > canvas.height - SIZE) {
-        ball.y = canvas.height - SIZE;
-        ball.dy *= -1;
-    }
     if(ball.x < SIZE && ball.x >= 0 && ball.y > p1.y - SIZE && ball.y < p1.y + p1.height) {
         ball.dx *= -1;
     }
     if(ball.x > canvas.width - 2 * SIZE && ball.x <= canvas.width - SIZE && ball.y > p2.y - SIZE && ball.y < p2.y + p2.height) {
         ball.dx *= -1;
+    }
+    if(ball.y < 0) {
+        ball.y = 0;
+        ball.dy = Math.abs(ball.dy);
+    }
+    if(ball.y > canvas.height - SIZE) {
+        ball.y = canvas.height - SIZE;
+        ball.dy = -Math.abs(ball.dy);
     }
     
     // player movement

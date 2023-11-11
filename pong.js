@@ -51,10 +51,12 @@ function frame() {
     ball.x += ball.dx * ball.speed;
     ball.y += ball.dy * ball.speed;
     if(ball.x < SIZE && ball.x >= 0 && ball.y > p1.y - SIZE && ball.y < p1.y + p1.height) {
-        ball.dx *= -1;
+        ball.dx = 1;
+        ball.dy = (2 * (ball.y - p1.y) - p1.height + SIZE) / p1.height;
     }
     if(ball.x > canvas.width - 2 * SIZE && ball.x <= canvas.width - SIZE && ball.y > p2.y - SIZE && ball.y < p2.y + p2.height) {
-        ball.dx *= -1;
+        ball.dx = -1;
+        ball.dy = (2 * (ball.y - p2.y) - p2.height + SIZE) / p2.height;
     }
     if(ball.y < 0) {
         ball.y = 0;

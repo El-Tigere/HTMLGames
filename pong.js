@@ -45,6 +45,9 @@ var canvas;
 /** @type {CanvasRenderingContext2D} */
 var ctx;
 
+/**
+ * The frame-function is the main loop of the game. It is run every MSPF milliseconds (MSPF = milliseconds per frame).
+ */
 function frame() {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
     

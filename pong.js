@@ -58,6 +58,7 @@ function frame() {
     // ball movement
     ball.x += ball.dx * ball.speed;
     ball.y += ball.dy * ball.speed;
+    // ball-player-collisions
     if(ball.x < SIZE && ball.x >= 0 && ball.y > p1.y - SIZE && ball.y < p1.y + p1.height) {
         ball.dx = 1;
         ball.dy = (2 * (ball.y - p1.y) - p1.height + SIZE) / p1.height;
@@ -66,6 +67,7 @@ function frame() {
         ball.dx = -1;
         ball.dy = (2 * (ball.y - p2.y) - p2.height + SIZE) / p2.height;
     }
+    // ball-border-collisions
     if(ball.y < 0) {
         ball.y = 0;
         ball.dy = Math.abs(ball.dy);

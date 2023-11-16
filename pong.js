@@ -22,13 +22,15 @@ var game = {
         height: 0,
         speed: 10,
         y: 0,
-        input: 0
+        input: 0,
+        score: 0
     },
     p2: {
         height: 0,
         speed: 10,
         y: 0,
-        input: 0
+        input: 0,
+        score: 0
     }
 }
 

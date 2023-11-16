@@ -99,6 +99,11 @@ function frame() {
     ctx.fillRect(canvas.width - SIZE, p2.y, SIZE, p2.height);
 }
 
+function start() {
+    // set player position
+    game.p1.y = game.p2.y = ((canvas.height - game.p1.height) / 2) >> 0;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     canvas = document.getElementById('pongCanvas');
     ctx = canvas.getContext('2d');
@@ -106,12 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // set player height
     game.p1.height = game.p2.height = canvas.height * RELATIVE_PLAYER_HEIGHT;
     
-    // set initial player position
-    game.p1.y = game.p2.y = ((canvas.height - game.p1.height) / 2) >> 0;
-    
     // input events
     document.addEventListener('keydown', (keyEvent) => input[keyEvent.code] = 1);
     document.addEventListener('keyup', (keyEvent) => input[keyEvent.code] = 0);
+    
+    // start game
+    start();
     
     // start game loop
     setInterval(frame, MSPF);

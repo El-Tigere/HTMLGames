@@ -102,6 +102,12 @@ function frame() {
 function start() {
     // set player position
     game.p1.y = game.p2.y = ((canvas.height - game.p1.height) / 2) >> 0;
+    
+    // init ball
+    game.ball.x = (canvas.width - SIZE) / 2;
+    game.ball.y = (canvas.height - SIZE) / 2;
+    game.ball.dx = (Math.random() > 0.5) * 2 - 1;
+    game.ball.dy = Math.random() * 2 - 1;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

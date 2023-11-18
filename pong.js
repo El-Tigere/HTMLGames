@@ -85,6 +85,18 @@ function frame() {
         player.y = Math.min(Math.max(player.y, 0), canvas.height - player.height);
     });
     
+    // scores
+    if(ball.x < -SIZE) {
+        p2.score++;
+        start();
+        return;
+    }
+    if(ball.x > canvas.width) {
+        p1.score++;
+        start();
+        return;
+    }
+    
     // clear background
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);

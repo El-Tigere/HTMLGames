@@ -101,13 +101,19 @@ function frame() {
     ctx.fillStyle = '#000000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // draw scores
     ctx.fillStyle = '#808080';
+    
+    // draw scores
     ctx.font = '2em Arial'
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(p1.score, canvas.width * 0.25, canvas.height * 0.15);
     ctx.fillText(p2.score, canvas.width * 0.75, canvas.height * 0.15);
+    
+    // draw net
+    for(let i = 0; i < canvas.height; i += SIZE * 2) {
+        ctx.fillRect((canvas.width - SIZE) / 2, i, SIZE, SIZE);
+    }
     
     ctx.fillStyle = '#FFFFFF';
     

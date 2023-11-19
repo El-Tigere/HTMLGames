@@ -57,6 +57,12 @@ function frame() {
     p1.input = input['KeyS'] - input['KeyW'];
     p2.input = input['ArrowDown'] - input['ArrowUp'];
     
+    // player movement
+    [p1, p2].forEach((player) => {
+        player.y += player.input * player.speed;
+        player.y = Math.min(Math.max(player.y, 0), canvas.height - player.height);
+    });
+    
     // ball movement
     ball.x += ball.dx * ball.speed;
     ball.y += ball.dy * ball.speed;
@@ -78,12 +84,6 @@ function frame() {
         ball.y = canvas.height - SIZE;
         ball.dy = -Math.abs(ball.dy);
     }
-    
-    // player movement
-    [p1, p2].forEach((player) => {
-        player.y += player.input * player.speed;
-        player.y = Math.min(Math.max(player.y, 0), canvas.height - player.height);
-    });
     
     // scores
     if(ball.x < -SIZE) {

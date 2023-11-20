@@ -1,6 +1,6 @@
 const MSPF = 20;
 
-const SIZE = 10;
+const SIZE = 15;
 const HSIZE = SIZE / 2;
 
 const RELATIVE_PLAYER_HEIGHT = 1 / 8; // default player height in relation to canvas height
@@ -12,7 +12,7 @@ const RELATIVE_PLAYER_HEIGHT = 1 / 8; // default player height in relation to ca
  */
 var game = {
     ball: {
-        speed: 5,
+        speed: 10,
         x: 0,
         y: 0,
         dx: 1,
@@ -20,14 +20,14 @@ var game = {
     },
     p1: {
         height: 0,
-        speed: 10,
+        speed: 20,
         y: 0,
         input: 0,
         score: 0
     },
     p2: {
         height: 0,
-        speed: 10,
+        speed: 20,
         y: 0,
         input: 0,
         score: 0
@@ -104,7 +104,7 @@ function frame() {
     ctx.fillStyle = '#808080';
     
     // draw scores
-    ctx.font = '2em Arial'
+    ctx.font = (SIZE * 4) + 'px Arial'
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(p1.score, canvas.width * 0.25, canvas.height * 0.15);

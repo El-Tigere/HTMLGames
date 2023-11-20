@@ -1,7 +1,6 @@
 const MSPF = 20;
 
 const SIZE = 15;
-const HSIZE = SIZE / 2;
 
 const RELATIVE_PLAYER_HEIGHT = 1 / 8; // default player height in relation to canvas height
 

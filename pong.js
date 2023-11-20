@@ -111,7 +111,7 @@ function frame() {
     ctx.fillText(p2.score, canvas.width * 0.75, canvas.height * 0.15);
     
     // draw net
-    for(let i = 0; i < canvas.height; i += SIZE * 2) {
+    for(let i = ((canvas.height - SIZE) % (SIZE * 2)) / 2; i < canvas.height; i += SIZE * 2) {
         ctx.fillRect((canvas.width - SIZE) / 2, i, SIZE, SIZE);
     }
     

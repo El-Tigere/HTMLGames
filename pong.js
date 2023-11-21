@@ -4,6 +4,12 @@ const SIZE = 15;
 
 const RELATIVE_PLAYER_HEIGHT = 1 / 8; // default player height in relation to canvas height
 
+const colors = {
+    background: '#000000',
+    midground: '#808080',
+    foreground: '#FFFFFF'
+}
+
 /**
  * game variables that store information about the players and the ball
  * p1: player1
@@ -97,10 +103,10 @@ function frame() {
     }
     
     // clear background
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = colors.background;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    ctx.fillStyle = '#808080';
+    ctx.fillStyle = colors.midground;
     
     // draw scores
     ctx.font = (SIZE * 4) + 'px Arial'
@@ -114,7 +120,7 @@ function frame() {
         ctx.fillRect((canvas.width - SIZE) / 2, i, SIZE, SIZE);
     }
     
-    ctx.fillStyle = '#FFFFFF';
+    ctx.fillStyle = colors.foreground;
     
     // draw ball
     ctx.fillRect(ball.x, ball.y, SIZE, SIZE);

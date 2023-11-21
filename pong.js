@@ -6,7 +6,8 @@ const RELATIVE_PLAYER_HEIGHT = 1 / 8; // default player height in relation to ca
 
 const colors = {
     background: '#000000',
-    midground: '#808080',
+    net: '#808080',
+    scores: '#808080',
     foreground: '#FFFFFF'
 }
 
@@ -106,9 +107,9 @@ function frame() {
     ctx.fillStyle = colors.background;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    ctx.fillStyle = colors.midground;
     
     // draw scores
+    ctx.fillStyle = colors.scores;
     ctx.font = (SIZE * 4) + 'px Arial'
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -116,6 +117,7 @@ function frame() {
     ctx.fillText(p2.score, canvas.width * 0.75, canvas.height * 0.15);
     
     // draw net
+    ctx.fillStyle = colors.net;
     for(let i = ((canvas.height - SIZE) % (SIZE * 2)) / 2; i < canvas.height; i += SIZE * 2) {
         ctx.fillRect((canvas.width - SIZE) / 2, i, SIZE, SIZE);
     }

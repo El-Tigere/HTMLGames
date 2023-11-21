@@ -8,7 +8,8 @@ const colors = {
     background: '#000000',
     net: '#808080',
     scores: '#808080',
-    foreground: '#FFFFFF'
+    players: '#FFFFFF',
+    ball: '#FFFFFF'
 }
 
 /**
@@ -122,12 +123,12 @@ function frame() {
         ctx.fillRect((canvas.width - SIZE) / 2, i, SIZE, SIZE);
     }
     
-    ctx.fillStyle = colors.foreground;
-    
     // draw ball
+    ctx.fillStyle = colors.ball;
     ctx.fillRect(ball.x, ball.y, SIZE, SIZE);
     
     // draw players
+    ctx.fillStyle = colors.players;
     ctx.fillRect(0, p1.y, SIZE, p1.height);
     ctx.fillRect(canvas.width - SIZE, p2.y, SIZE, p2.height);
 }

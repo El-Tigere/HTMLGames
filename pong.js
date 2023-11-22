@@ -38,7 +38,8 @@ var game = {
         y: 0,
         input: 0,
         score: 0
-    }
+    },
+    speedFactor: 1
 }
 
 var input = {

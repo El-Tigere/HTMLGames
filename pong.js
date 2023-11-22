@@ -143,6 +143,8 @@ function start() {
     game.ball.y = (canvas.height - SIZE) / 2;
     game.ball.dx = (Math.random() > 0.5) * 2 - 1;
     game.ball.dy = Math.random() * 2 - 1;
+    
+    game.speedFactor = 1;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -67,13 +67,13 @@ function frame() {
     
     // player movement
     [p1, p2].forEach((player) => {
-        player.y += player.input * player.speed;
+        player.y += player.input * player.speed * game.speedFactor;
         player.y = Math.min(Math.max(player.y, 0), canvas.height - player.height);
     });
     
     // ball movement
-    ball.x += ball.dx * ball.speed;
-    ball.y += ball.dy * ball.speed;
+    ball.x += ball.dx * ball.speed * game.speedFactor;
+    ball.y += ball.dy * ball.speed * game.speedFactor;
     // ball-player-collisions
     if(ball.x < SIZE && ball.x >= 0 && ball.y > p1.y - SIZE && ball.y < p1.y + p1.height) {
         ball.dx = 1;

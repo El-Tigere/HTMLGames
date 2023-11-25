@@ -28,7 +28,7 @@ var input = {
     'KeyW': 0,
     'KeyS': 0,
     'ArrowUp': 0,
-    'ArrowDown': 0,
+    'ArrowDown': 0
 }
 
 /** @type {DOMRect} */
@@ -93,10 +93,9 @@ function frame() {
     ctx.fillStyle = colors.background;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    
     // draw scores
     ctx.fillStyle = colors.scores;
-    ctx.font = (SIZE * 4) + 'px Arial'
+    ctx.font = (SIZE * 4) + 'px Arial';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(scores.p1, canvas.width * 0.25, canvas.height * 0.15);
@@ -124,7 +123,7 @@ function start() {
             speed: 10,
             x: (canvas.width - SIZE) / 2,
             y: (canvas.height - SIZE) / 2,
-            dx: (Math.random() > 0.5) * 2 - 1,
+            dx: (Math.random() >= 0.5) * 2 - 1,
             dy: Math.random() * 2 - 1
         },
         p1: {

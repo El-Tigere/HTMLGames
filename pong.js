@@ -17,30 +17,12 @@ const colors = {
  * p1: player1
  * p2: player2
  */
-var game = {
-    ball: {
-        speed: 10,
-        x: 0,
-        y: 0,
-        dx: 1,
-        dy: 1
-    },
-    p1: {
-        height: 0,
-        speed: 20,
-        y: 0,
-        input: 0,
-        score: 0
-    },
-    p2: {
-        height: 0,
-        speed: 20,
-        y: 0,
-        input: 0,
-        score: 0
-    },
-    speedFactor: 1
-}
+var game = {};
+
+var scores = {
+    p1: 0,
+    p2: 0
+};
 
 var input = {
     'KeyW': 0,
@@ -97,12 +79,12 @@ function frame() {
     
     // scores
     if(ball.x < -SIZE) {
-        p2.score++;
+        scores.p2++;
         start();
         return;
     }
     if(ball.x > canvas.width) {
-        p1.score++;
+        scores.p1++;
         start();
         return;
     }
@@ -117,8 +99,8 @@ function frame() {
     ctx.font = (SIZE * 4) + 'px Arial'
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(p1.score, canvas.width * 0.25, canvas.height * 0.15);
-    ctx.fillText(p2.score, canvas.width * 0.75, canvas.height * 0.15);
+    ctx.fillText(scores.p1, canvas.width * 0.25, canvas.height * 0.15);
+    ctx.fillText(scores.p2, canvas.width * 0.75, canvas.height * 0.15);
     
     // draw net
     ctx.fillStyle = colors.net;
@@ -137,6 +119,29 @@ function frame() {
 }
 
 function start() {
+    game = {
+        ball: {
+            speed: 10,
+            x: 0,
+            y: 0,
+            dx: 1,
+            dy: 1
+        },
+        p1: {
+            height: canvas.height * RELATIVE_PLAYER_HEIGHT,
+            speed: 20,
+            y: 0,
+            input: 0
+        },
+        p2: {
+            height: canvas.height * RELATIVE_PLAYER_HEIGHT,
+            speed: 20,
+            y: 0,
+            input: 0
+        },
+        speedFactor: 1
+    }
+    
     // set player position
     game.p1.y = game.p2.y = ((canvas.height - game.p1.height) / 2) >> 0;
     
@@ -146,15 +151,12 @@ function start() {
     game.ball.dx = (Math.random() > 0.5) * 2 - 1;
     game.ball.dy = Math.random() * 2 - 1;
     
-    game.speedFactor = .1;
+    game.speedFactor = 1;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     canvas = document.getElementById('pongCanvas');
     ctx = canvas.getContext('2d');
-    
-    // set player height
-    game.p1.height = game.p2.height = canvas.height * RELATIVE_PLAYER_HEIGHT;
     
     // input events
     document.addEventListener('keydown', (keyEvent) => input[keyEvent.code] = 1);

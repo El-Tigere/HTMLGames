@@ -122,36 +122,25 @@ function start() {
     game = {
         ball: {
             speed: 10,
-            x: 0,
-            y: 0,
-            dx: 1,
-            dy: 1
+            x: (canvas.width - SIZE) / 2,
+            y: (canvas.height - SIZE) / 2,
+            dx: (Math.random() > 0.5) * 2 - 1,
+            dy: Math.random() * 2 - 1
         },
         p1: {
             height: canvas.height * RELATIVE_PLAYER_HEIGHT,
             speed: 20,
-            y: 0,
+            y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
             input: 0
         },
         p2: {
             height: canvas.height * RELATIVE_PLAYER_HEIGHT,
             speed: 20,
-            y: 0,
+            y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
             input: 0
         },
         speedFactor: 1
     }
-    
-    // set player position
-    game.p1.y = game.p2.y = ((canvas.height - game.p1.height) / 2) >> 0;
-    
-    // init ball
-    game.ball.x = (canvas.width - SIZE) / 2;
-    game.ball.y = (canvas.height - SIZE) / 2;
-    game.ball.dx = (Math.random() > 0.5) * 2 - 1;
-    game.ball.dy = Math.random() * 2 - 1;
-    
-    game.speedFactor = 1;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

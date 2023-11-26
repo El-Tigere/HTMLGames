@@ -37,6 +37,13 @@ var canvas;
 /** @type {CanvasRenderingContext2D} */
 var ctx;
 
+function collideRect(a, b) {
+    return a.x < b.x + b.width
+        && a.x + a.width > b.x
+        && a.y < b.y + b.height
+        && a.y + a.height > b.y
+}
+
 /**
  * The frame-function is the main loop of the game. It is run every MSPF milliseconds (MSPF = milliseconds per frame).
  */

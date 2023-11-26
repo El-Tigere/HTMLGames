@@ -64,12 +64,12 @@ function frame() {
     ball.x += ball.dx * ball.speed * game.speedFactor;
     ball.y += ball.dy * ball.speed * game.speedFactor;
     // ball-player-collisions
-    if(ball.x < SIZE && ball.x >= 0 && ball.y > p1.y - SIZE && ball.y < p1.y + p1.height && ball.dx < 0) {
+    if(collideRect(p1, ball) && ball.dx < 0) {
         ball.dx = 1;
         game.speedFactor += 0.02;
         ball.dy = (2 * (ball.y - p1.y) - p1.height + SIZE) / p1.height;
     }
-    if(ball.x > canvas.width - 2 * SIZE && ball.x <= canvas.width - SIZE && ball.y > p2.y - SIZE && ball.y < p2.y + p2.height && ball.dx > 0) {
+    if(collideRect(p2, ball) && ball.dx > 0) {
         ball.dx = -1;
         game.speedFactor += 0.02;
         ball.dy = (2 * (ball.y - p2.y) - p2.height + SIZE) / p2.height;

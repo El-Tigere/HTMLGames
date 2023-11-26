@@ -120,22 +120,28 @@ function frame() {
 function start() {
     game = {
         ball: {
-            speed: 10,
             x: (canvas.width - SIZE) / 2,
             y: (canvas.height - SIZE) / 2,
+            width: SIZE,
+            height: SIZE,
             dx: (Math.random() >= 0.5) * 2 - 1,
-            dy: Math.random() * 2 - 1
+            dy: Math.random() * 2 - 1,
+            speed: 10
         },
         p1: {
+            x: 0,
+            y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
+            width: SIZE,
             height: canvas.height * RELATIVE_PLAYER_HEIGHT,
             speed: 20,
-            y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
             input: 0
         },
         p2: {
+            x: canvas.width - SIZE,
+            y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
+            width: SIZE,
             height: canvas.height * RELATIVE_PLAYER_HEIGHT,
             speed: 20,
-            y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
             input: 0
         },
         speedFactor: 1

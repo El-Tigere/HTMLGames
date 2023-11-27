@@ -155,6 +155,11 @@ function start() {
     }
 }
 
+function gameLoop(timeStamp) {
+    frame();
+    requestAnimationFrame(gameLoop);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     canvas = document.getElementById('pongCanvas');
     ctx = canvas.getContext('2d');
@@ -167,5 +172,5 @@ document.addEventListener('DOMContentLoaded', () => {
     start();
     
     // start game loop
-    setInterval(frame, MSPF);
+    window.requestAnimationFrame(gameLoop);
 });

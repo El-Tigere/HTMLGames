@@ -37,6 +37,8 @@ var canvas;
 /** @type {CanvasRenderingContext2D} */
 var ctx;
 
+var lastFrame = 0;
+
 function collideRect(a, b) {
     return a.x < b.x + b.width
         && a.x + a.width > b.x
@@ -45,10 +47,12 @@ function collideRect(a, b) {
 }
 
 /**
- * The frame-function is the main loop of the game. It is run every MSPF milliseconds (MSPF = milliseconds per frame).
+ * The frame-function is the main loop of the game.
  */
-function frame() {
+function frame(deltaTime) {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
+    
+    let speed = game.speedFactor * deltaTime / 1000;
     
     // input
     p1.input = input['KeyS'] - input['KeyW'];
@@ -56,13 +60,13 @@ function frame() {
     
     // player movement
     [p1, p2].forEach((player) => {
-        player.y += player.input * player.speed * game.speedFactor;
+        player.y += player.input * player.speed * speed;
         player.y = Math.min(Math.max(player.y, 0), canvas.height - player.height);
     });
     
     // ball movement
-    ball.x += ball.dx * ball.speed * game.speedFactor;
-    ball.y += ball.dy * ball.speed * game.speedFactor;
+    ball.x += ball.dx * ball.speed * speed;
+    ball.y += ball.dy * ball.speed * speed;
     // ball-player-collisions
     if(collideRect(p1, ball) && ball.dx < 0) {
         ball.dx = 1;
@@ -160,8 +164,11 @@ function start() {
 }
 
 function gameLoop(timeStamp) {
-    frame();
+    frame(timeStamp - lastFrame);
     update();
+    
+    lastFrame = timeStamp;
+    
     requestAnimationFrame(gameLoop);
 }
 

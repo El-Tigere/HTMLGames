@@ -95,6 +95,10 @@ function frame() {
         start();
         return;
     }
+}
+
+function update() {
+    let ball = game.ball, p1 = game.p1, p2 = game.p2;
     
     // clear background
     ctx.fillStyle = colors.background;
@@ -157,6 +161,7 @@ function start() {
 
 function gameLoop(timeStamp) {
     frame();
+    update();
     requestAnimationFrame(gameLoop);
 }
 

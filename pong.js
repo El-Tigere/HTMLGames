@@ -49,7 +49,7 @@ function collideRect(a, b) {
 /**
  * The frame-function is the main loop of the game.
  */
-function frame(deltaTime) {
+function update(deltaTime) {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
     
     let speed = game.speedFactor * deltaTime / 1000;
@@ -101,7 +101,7 @@ function frame(deltaTime) {
     }
 }
 
-function update() {
+function draw() {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
     
     // clear background
@@ -164,8 +164,8 @@ function start() {
 }
 
 function gameLoop(timeStamp) {
-    frame(timeStamp - lastFrame);
-    update();
+    update(timeStamp - lastFrame);
+    draw();
     
     lastFrame = timeStamp;
     

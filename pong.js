@@ -141,14 +141,14 @@ function start() {
             height: SIZE,
             dx: (Math.random() >= 0.5) * 2 - 1,
             dy: Math.random() * 2 - 1,
-            speed: 10
+            speed: 500
         },
         p1: {
             x: 0,
             y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
             width: SIZE,
             height: canvas.height * RELATIVE_PLAYER_HEIGHT,
-            speed: 20,
+            speed: 1000,
             input: 0
         },
         p2: {
@@ -156,7 +156,7 @@ function start() {
             y: ((canvas.height * (1 - RELATIVE_PLAYER_HEIGHT)) / 2) >> 0,
             width: SIZE,
             height: canvas.height * RELATIVE_PLAYER_HEIGHT,
-            speed: 20,
+            speed: 1000,
             input: 0
         },
         speedFactor: 1

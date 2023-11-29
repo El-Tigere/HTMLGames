@@ -93,14 +93,20 @@ function update(deltaTime) {
     // scores
     if(ball.x < -SIZE) {
         scores.p2++;
-        reset();
+        restartAfterDelay(1000);
         return;
     }
     if(ball.x > canvas.width) {
         scores.p1++;
-        reset();
+        restartAfterDelay(1000);
         return;
     }
+}
+
+function restartAfterDelay(delay) {
+    stop();
+    reset();
+    setTimeout(start, delay);
 }
 
 function draw() {
@@ -196,7 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (keyEvent) => input[keyEvent.code] = 1);
     document.addEventListener('keyup', (keyEvent) => input[keyEvent.code] = 0);
     
-    // start game
+    // draw first frame
     reset();
-    start();
+    draw();
+    
+    // start game
+    setTimeout(start, 3000);
 });

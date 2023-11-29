@@ -19,7 +19,7 @@ const colors = {
  */
 var game = {};
 
-var running = true;
+var running = false;
 
 var scores = {
     p1: 0,
@@ -39,7 +39,7 @@ var canvas;
 /** @type {CanvasRenderingContext2D} */
 var ctx;
 
-var lastFrame = 0;
+var lastFrame = null;
 
 function collideRect(a, b) {
     return a.x < b.x + b.width
@@ -165,15 +165,27 @@ function reset() {
     }
 }
 
+function start() {
+    lastFrame = null;
+    running = true;
+    window.requestAnimationFrame(gameLoop);
+}
+
+function stop() {
+    running = false;
+}
+
 function gameLoop(timeStamp) {
     if(!running) return;
     
-    update(timeStamp - lastFrame);
+    let deltaTime = lastFrame == null ? 0 : timeStamp - lastFrame;
+    
+    update(deltaTime);
     draw();
     
     lastFrame = timeStamp;
     
-    requestAnimationFrame(gameLoop);
+    if(running) requestAnimationFrame(gameLoop);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -186,7 +198,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // start game
     reset();
-    
-    // start game loop
-    window.requestAnimationFrame(gameLoop);
+    start();
 });

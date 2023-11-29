@@ -19,6 +19,8 @@ const colors = {
  */
 var game = {};
 
+var running = true;
+
 var scores = {
     p1: 0,
     p2: 0
@@ -91,12 +93,12 @@ function update(deltaTime) {
     // scores
     if(ball.x < -SIZE) {
         scores.p2++;
-        start();
+        reset();
         return;
     }
     if(ball.x > canvas.width) {
         scores.p1++;
-        start();
+        reset();
         return;
     }
 }
@@ -132,7 +134,7 @@ function draw() {
     ctx.fillRect(canvas.width - SIZE, p2.y, SIZE, p2.height);
 }
 
-function start() {
+function reset() {
     game = {
         ball: {
             x: (canvas.width - SIZE) / 2,
@@ -164,6 +166,8 @@ function start() {
 }
 
 function gameLoop(timeStamp) {
+    if(!running) return;
+    
     update(timeStamp - lastFrame);
     draw();
     
@@ -181,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keyup', (keyEvent) => input[keyEvent.code] = 0);
     
     // start game
-    start();
+    reset();
     
     // start game loop
     window.requestAnimationFrame(gameLoop);

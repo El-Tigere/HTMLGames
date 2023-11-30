@@ -200,6 +200,18 @@ function stop() {
     running = false;
 }
 
+function startGame(gameMode) {
+    // set gameMode
+    currentGameMode = gameMode;
+    
+    // draw first frame
+    reset();
+    draw();
+    
+    // start game after delay
+    setTimeout(start, 3000);
+}
+
 function gameLoop(timeStamp) {
     if(!running) return;
     
@@ -221,10 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (keyEvent) => input[keyEvent.code] = 1);
     document.addEventListener('keyup', (keyEvent) => input[keyEvent.code] = 0);
     
-    // draw first frame
-    reset();
-    draw();
-    
     // start game
-    setTimeout(start, 3000);
+    startGame(gameModes.versus);
 });

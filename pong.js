@@ -41,6 +41,25 @@ var ctx;
 
 var lastFrame = null;
 
+const gameModes = {
+    versus: {
+        start: () => {
+            scores = {p1: 0, p2: 0};
+        },
+        bounce: (player) => {
+            game.speedFactor += 0.02;
+        },
+        score: (player) => {
+            scores[player]++;
+            restartAfterDelay(1000);
+        },
+        end: () => {
+        }
+    }
+}
+
+var currentGameMode;
+
 function collideRect(a, b) {
     return a.x < b.x + b.width
         && a.x + a.width > b.x

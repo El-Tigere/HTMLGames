@@ -46,6 +46,8 @@ const gameModes = {
         start: () => {
             scores = {p1: 0, p2: 0};
         },
+        reset: () => {
+        },
         bounce: (player) => {
             game.speedFactor += 0.02;
         },

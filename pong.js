@@ -93,13 +93,13 @@ function update(deltaTime) {
     // ball-player-collisions
     if(collideRect(p1, ball) && ball.dx < 0) {
         ball.dx = 1;
-        game.speedFactor += 0.02;
         ball.dy = (2 * (ball.y - p1.y) - p1.height + SIZE) / p1.height;
+        currentGameMode.bounce('p1');
     }
     if(collideRect(p2, ball) && ball.dx > 0) {
         ball.dx = -1;
-        game.speedFactor += 0.02;
         ball.dy = (2 * (ball.y - p2.y) - p2.height + SIZE) / p2.height;
+        currentGameMode.bounce('p2');
     }
     // ball-border-collisions
     if(ball.y < 0) {
@@ -113,13 +113,11 @@ function update(deltaTime) {
     
     // scores
     if(ball.x < -SIZE) {
-        scores.p2++;
-        restartAfterDelay(1000);
+        currentGameMode.score('p2');
         return;
     }
     if(ball.x > canvas.width) {
-        scores.p1++;
-        restartAfterDelay(1000);
+        currentGameMode.score('p1');
         return;
     }
 }
@@ -190,6 +188,8 @@ function reset() {
         },
         speedFactor: 1
     }
+    
+    currentGameMode.reset();
 }
 
 function start() {
@@ -206,8 +206,11 @@ function startGame(gameMode) {
     // set gameMode
     currentGameMode = gameMode;
     
-    // draw first frame
+    // init
     reset();
+    currentGameMode.start();
+    
+    // draw first frame
     draw();
     
     // start game after delay

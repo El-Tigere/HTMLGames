@@ -141,7 +141,7 @@ function update(deltaTime) {
 }
 
 function restartAfterDelay(delay) {
-    stop();
+    pause();
     reset();
     setTimeout(start, delay);
 }
@@ -216,7 +216,7 @@ function start() {
     window.requestAnimationFrame(gameLoop);
 }
 
-function stop() {
+function pause() {
     running = false;
 }
 

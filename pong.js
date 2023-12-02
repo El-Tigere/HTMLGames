@@ -57,6 +57,24 @@ const gameModes = {
         },
         end: () => {
         }
+    },
+    coop: {
+        start: () => {
+        },
+        reset: () => {
+            scores = {p1: 0, p2: 0};
+        },
+        bounce: (player) => {
+            scores.p1++;
+            scores.p2++;
+            game.speedFactor += 0.02;
+        },
+        score: (player) => {
+            console.log(scores.p1);
+            restartAfterDelay(1000);
+        },
+        end: () => {
+        }
     }
 }
 
@@ -239,5 +257,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keyup', (keyEvent) => input[keyEvent.code] = 0);
     
     // start game
-    startGame(gameModes.versus);
+    startGame(gameModes.coop);
 });

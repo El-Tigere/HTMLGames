@@ -27,6 +27,16 @@ body {
     width: 0;
     height: 0.5em;
     background-color: #FFF;
+    animation: countdownBar 3s linear;
+}
+
+@keyframes countdownBar {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
 }
 
 @keyframes countdownText {

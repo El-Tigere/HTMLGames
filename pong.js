@@ -232,7 +232,10 @@ function startGame(gameMode) {
     draw();
     
     // start game after delay
-    setTimeout(start, 3000);
+    setTimeout(() => {
+        document.getElementById('countdown').style.display = 'none';
+        start();
+    }, 3000);
 }
 
 function gameLoop(timeStamp) {

@@ -143,7 +143,11 @@ function update(deltaTime) {
 function restartAfterDelay(delay) {
     pause();
     reset();
-    setTimeout(start, delay);
+    document.getElementById('shortCountdown').style.display = ''; // TODO dynamically set animation speed
+    setTimeout(() => {
+        document.getElementById('shortCountdown').style.display = 'none';
+        start();
+    }, delay);
 }
 
 function draw() {

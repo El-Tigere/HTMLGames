@@ -53,7 +53,7 @@ const gameModes = {
         },
         score: (player) => {
             scores[player]++;
-            restartAfterDelay(1000);
+            restartAfterDelay();
         },
         end: () => {
         }
@@ -71,7 +71,7 @@ const gameModes = {
         },
         score: (player) => {
             console.log(scores.p1);
-            restartAfterDelay(1000);
+            restartAfterDelay();
         },
         end: () => {
         }
@@ -140,14 +140,14 @@ function update(deltaTime) {
     }
 }
 
-function restartAfterDelay(delay) {
+function restartAfterDelay() {
     pause();
     reset();
     document.getElementById('shortCountdown').style.display = ''; // TODO dynamically set animation speed
     setTimeout(() => {
         document.getElementById('shortCountdown').style.display = 'none';
         start();
-    }, delay);
+    }, 1000);
 }
 
 function draw() {

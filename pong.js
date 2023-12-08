@@ -153,6 +153,9 @@ function restartAfterDelay() {
     }, 1000);
 }
 
+/**
+ * The draw-function draws one frame of the game to the pongCanvas
+ */
 function draw() {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
     

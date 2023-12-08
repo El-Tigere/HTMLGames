@@ -140,6 +140,9 @@ function update(deltaTime) {
     }
 }
 
+/**
+ * Pauses the game for one second. A progressbar is shown.
+ */
 function restartAfterDelay() {
     pause();
     reset();

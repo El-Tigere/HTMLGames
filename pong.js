@@ -88,7 +88,7 @@ function collideRect(a, b) {
 }
 
 /**
- * The frame-function is the main loop of the game.
+ * The update-function contains all movement- and input- related calculations
  */
 function update(deltaTime) {
     let ball = game.ball, p1 = game.p1, p2 = game.p2;
